@@ -1,0 +1,10 @@
+{
+    "ERR_GENERAL": {
+        "header": {
+            "code": 400
+        },
+        "body": {
+            "message": "Bad Request: Invalid payload or Syntax"
+        }
+    }
+}

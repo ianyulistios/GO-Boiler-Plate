@@ -1,0 +1,39 @@
+package databases
+
+import (
+	"GO-Boiler-Plate/helpers"
+	"fmt"
+	"os"
+
+	"github.com/jinzhu/gorm"
+)
+
+var gormInstance *gorm.DB //instance of DB of mysql
+
+//InitDBMysql Represented of initalize db connection to Mysql
+func InitDBMysql() (*gorm.DB, error) {
+	APPENV := os.Getenv("APP_ENV")
+	configConst := helpers.Database(APPENV + "." + "Mysql")
+	mapConfigConst := configConst.(map[string]interface{})
+	connString := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		mapConfigConst["USERNAME"].(string),
+		mapConfigConst["PASSWORD"].(string),
+		mapConfigConst["HOST"].(string),
+		mapConfigConst["PORT"].(string),
+		mapConfigConst["DB"].(string),
+	)
+	return gorm.Open("mysql", connString)
+}
+
+//GetConnection represented to get the connction based on singleton pattern
+func GetConnection() *gorm.DB {
+	if gormInstance == nil {
+		conn, err := InitDBMysql()
+		if err != nil {
+			panic(fmt.Errorf("Error Mysql Connection: %s", err))
+		}
+		gormInstance = conn
+	}
+	return gormInstance
+}
