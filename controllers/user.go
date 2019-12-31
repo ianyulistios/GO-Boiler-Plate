@@ -10,13 +10,12 @@ import (
 	"github.com/labstack/echo"
 )
 
-//UserController Represented of User Service Instance
-type UserController struct {
-	userSV services.UserService
-}
+//UserSV Represented of User Service Instance
+var userSV *services.UserService
 
-func (userSV *UserController) getUser(c echo.Context) (err error) {
-	data, err := userSV.userSV.Get()
+//GetUser Represented to Get Data User From DB
+func GetUser(c echo.Context) (err error) {
+	data, err := userSV.Get()
 	if err != nil {
 		errResponse, errResponseCode := helpers.ErrResponseHelper(err, "ERR_GENERAL")
 		return c.JSONPretty(errResponseCode, errResponse, config.JSONString)
