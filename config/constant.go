@@ -6,6 +6,9 @@ import (
 	"github.com/spf13/viper"
 )
 
+//JSONString Represented of Global Variabel to define JSON Pretty string argument
+var JSONString = ""
+
 //JSONConstants Represented of function to get Json Data in Constants Folder
 func JSONConstants(constantName string) *viper.Viper {
 	jsonConstant := viper.New()

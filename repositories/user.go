@@ -6,16 +6,16 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-//CategoryRepository Represented of Sturct to call the gorm and connect to all func
-type CategoryRepository struct {
+//UserRepository Represented of Sturct to call the gorm and connect to all func
+type UserRepository struct {
 	db *gorm.DB
 }
 
 //Get Represented of function to get the data of user
-func (repo *CategoryRepository) Get() []models.User {
+func (repo *UserRepository) Get() ([]models.User, error) {
 	userData := make([]models.User, 0)
 
-	repo.db.Find(&userData)
+	err := repo.db.Find(&userData)
 
-	return userData
+	return userData, err.Error
 }
