@@ -16,8 +16,6 @@ func InitDBMysql() (*gorm.DB, error) {
 	APPENV := os.Getenv("APP_ENV")
 	configConst := helpers.Database(APPENV + "." + "Mysql")
 	mapConfigConst := configConst.(map[string]interface{})
-	fmt.Print("disini")
-	fmt.Print(mapConfigConst)
 	connString := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		mapConfigConst["username"].(string),
@@ -26,7 +24,6 @@ func InitDBMysql() (*gorm.DB, error) {
 		mapConfigConst["port"].(string),
 		mapConfigConst["db"].(string),
 	)
-	fmt.Print(connString)
 	return gorm.Open("mysql", connString)
 }
 
