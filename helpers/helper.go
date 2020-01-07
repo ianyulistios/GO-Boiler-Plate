@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"GO-Boiler-Plate/config"
+	"os"
 )
 
 var databaseConfig = config.JSONConstants("db")
@@ -17,4 +18,14 @@ func Database(key string) interface{} {
 func GetJSONResponse(key string) interface{} {
 	result := responseConfig.Get(key)
 	return result
+}
+
+// Command Represented a Function to Get Command Line From Console
+func Command() string {
+	args := os.Args[1:]
+
+	if len(args) > 0 {
+		return args[0]
+	}
+	return ""
 }
