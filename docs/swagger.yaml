@@ -1,0 +1,27 @@
+basePath: /api/v1
+host: localhost:1412
+info:
+  contact:
+    email: ianyulistio@yahoo.io
+    name: Ian Yulistio Susilo
+  description: This is Go Boiler Plate Swagger Documentation.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: GO Boiler Plate
+  version: "1.0"
+paths:
+  /user:
+    get:
+      description: get User Data
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+        "500":
+          description: error
+          schema:
+            type: string
+swagger: "2.0"

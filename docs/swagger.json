@@ -1,0 +1,40 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is Go Boiler Plate Swagger Documentation.",
+        "title": "GO Boiler Plate",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Ian Yulistio Susilo",
+            "email": "ianyulistio@yahoo.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:1412",
+    "basePath": "/api/v1",
+    "paths": {
+        "/user": {
+            "get": {
+                "description": "get User Data",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

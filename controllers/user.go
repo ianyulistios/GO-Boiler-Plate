@@ -13,6 +13,11 @@ import (
 //UserSV Represented of User Service Instance
 var userSV *services.UserService
 
+// @title GetUser
+// @description get User Data
+// @success 200 {string} string	"success"
+// @failure 500 {string} string	"error"
+// @router /user [get]
 //GetUser Represented to Get Data User From DB
 func GetUser(c echo.Context) (err error) {
 	data, err := userSV.Get()

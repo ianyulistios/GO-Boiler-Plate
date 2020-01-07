@@ -9,10 +9,13 @@ import (
 
 // API Represented of function to Define Routes
 func API(e *echo.Echo) {
-	route := e.Group("/v1")
+	// API Group Definition
+	route := e.Group("/api")
+	// API Version 1 Definition
+	v1route := route.Group("/v1")
 	route.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.GET, echo.PUT, echo.POST, echo.DELETE},
 	}))
-	route.GET("/user", controllers.GetUser)
+	v1route.GET("/user", controllers.GetUser)
 }
